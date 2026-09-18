@@ -50,6 +50,9 @@ _bmad/config.user.toml
 _bmad/custom/*.user.toml
 _bmad/render/
 .claude/settings.local.json
+.bmad-loop/runs/
+.bmad-loop/cache/
+.bmad-loop/policy.toml
 
 # Operating system / editors
 .DS_Store
