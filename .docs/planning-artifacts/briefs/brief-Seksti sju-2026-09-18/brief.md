@@ -1,11 +1,11 @@
 ---
-title: "Product Brief: CV & Application Assistant for Students (working title)"
+title: "Product Brief: CV & Application Assistant for Students"
 status: draft
 created: 2026-09-18
 updated: 2026-09-18
 ---
 
-# Product Brief: CV & Application Assistant for Students (working title)
+# Product Brief: CV & Application Assistant for Students
 
 ## Executive Summary
 
