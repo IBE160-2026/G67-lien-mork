@@ -1,100 +1,100 @@
 ---
-title: "Product Brief: CV & Application Assistant for Students"
+title: "Produktbeskrivelse: CV- og søknadsassistent for studenter"
 status: draft
 created: 2026-09-18
 updated: 2026-09-18
 ---
 
-# Product Brief: CV & Application Assistant for Students
+# Produktbeskrivelse: CV- og søknadsassistent for studenter
 
-## Executive Summary
+## Sammendrag
 
-Students applying for jobs and internships face a mismatch: each posting wants a cover letter and CV tailored to its specific language and requirements, but most students write one generic version and reuse it everywhere. At the same time, AI is already deeply embedded on the other side of the hiring process — screening, ranking, and filtering applications — and students rarely get to see how that machinery actually reads what they submit.
+Studenter som søker jobb og internship møter et misforhold: hver utlysning ønsker et søknadsbrev og en CV tilpasset sitt eget språk og sine egne krav, men de fleste studenter skriver én generisk versjon og gjenbruker den overalt. Samtidig er KI allerede dypt forankret på den andre siden av ansettelsesprosessen — screening, rangering og filtrering av søknader — og studenter får sjelden se hvordan dette maskineriet faktisk leser det de sender inn.
 
-This tool closes both gaps at once. A student uploads a CV and a job posting; the tool produces a tailored cover letter, surfaces concrete CV improvements, flags qualifications the posting wants that the CV doesn't show, and scores the result against ATS-style keyword matching — the same mechanics a real applicant-tracking system would apply. The student stays in control of how much the tool rewrites versus merely suggests, in what tone, and in what output format.
+Dette verktøyet tetter begge hullene på én gang. En student laster opp en CV og en stillingsannonse; verktøyet lager et skreddersydd søknadsbrev, avdekker konkrete CV-forbedringer, flagger kvalifikasjoner annonsen etterspør som CV-en ikke viser, og gir en poengsum basert på ATS-lignende nøkkelordmatching — de samme mekanismene et reelt søkersporingssystem (ATS) ville brukt. Studenten beholder kontrollen over hvor mye verktøyet skal skrive om versus bare foreslå, i hvilken tone, og i hvilket format.
 
-Because it stores CVs, job history, and prior applications, the product treats encrypted storage and authenticated access as foundational, not optional — this is personal data handled at a genuinely useful level of persistence (previous applications inform future ones), which is exactly the profile that needs to be built carefully from day one rather than retrofitted.
+Fordi produktet lagrer CV-er, jobbhistorikk og tidligere søknader, behandles kryptert lagring og autentisert tilgang som grunnleggende, ikke valgfritt — dette er personopplysninger håndtert med en reell grad av persistens (tidligere søknader gir kontekst til fremtidige), som er nøyaktig den typen profil som må bygges forsvarlig fra dag én, ikke ettermonteres.
 
-This is scoped as a course/portfolio-level build — rigor suited to a strong student project or capstone, not an investor-grade or enterprise-compliance submission.
+Dette er avgrenset som et kurs-/porteføljenivå-prosjekt — grundighet tilpasset et solid studentprosjekt eller en avsluttende oppgave, ikke en investor- eller bedriftscompliance-leveranse.
 
-## The Problem
+## Problemet
 
-Students applying for jobs today typically:
+Studenter som søker jobb i dag gjør typisk følgende:
 
-- Write one CV and one cover letter template, then lightly edit it per application — because tailoring each submission by hand is slow and the payoff per posting is uncertain.
-- Have no visibility into *why* an application gets filtered out. Feedback, when it comes at all, is a generic rejection — not "your CV was missing X keyword" or "this posting screens on Y qualification you don't list."
-- Don't know what an ATS (Applicant Tracking System) actually does with their submission. The AI systems doing the filtering are opaque to the people being filtered.
-- Face this specifically as students: thin work history means every application has to work harder to connect what little experience they have to what the posting asks for — exactly the kind of gap-finding and phrasing work that's most tedious to do manually, per posting, at volume.
+- Skriver én CV og én søknadsbrevmal, og redigerer den lett per søknad — fordi å skreddersy hver innsending manuelt er tidkrevende og gevinsten per annonse er usikker.
+- Har ingen innsikt i *hvorfor* en søknad blir filtrert bort. Tilbakemelding, når den i det hele tatt kommer, er et generisk avslag — ikke "CV-en din manglet nøkkelordet X" eller "denne annonsen screener på kvalifikasjonen Y som du ikke har oppgitt."
+- Vet ikke hva et ATS (Applicant Tracking System / søkersporingssystem) faktisk gjør med innsendingen deres. KI-systemene som utfører filtreringen er ugjennomsiktige for dem som blir filtrert.
+- Møter dette spesielt som studenter: tynn arbeidserfaring betyr at hver søknad må jobbe hardere for å koble den lille erfaringen de har til det annonsen ber om — nettopp den typen hull-identifisering og formuleringsarbeid som er mest tungvint å gjøre manuelt, per annonse, i stort volum.
 
-The cost of the status quo is applications that are technically submitted but poorly matched — both to the human reader and to the automated filter that often reads it first.
+Kostnaden ved dagens praksis er søknader som teknisk sett er sendt inn, men dårlig tilpasset — både til den menneskelige leseren og til det automatiserte filteret som ofte leser den først.
 
-## The Solution
+## Løsningen
 
-A tool that takes a student's CV and a target job posting and produces, per application:
+Et verktøy som tar en students CV og en målrettet stillingsannonse og produserer, per søknad:
 
-- A tailored cover letter, matched to the posting's language and the student's stated tone/style preference.
-- Concrete CV improvement suggestions specific to that posting.
-- A gap analysis: qualifications the posting asks for that the CV doesn't currently show.
-- An ATS-optimization pass — keyword/format alignment with how automated screening actually parses submissions.
+- Et skreddersydd søknadsbrev, tilpasset annonsens språk og studentens angitte tone-/stilpreferanse.
+- Konkrete CV-forbedringsforslag spesifikke for den aktuelle annonsen.
+- En gapanalyse: kvalifikasjoner annonsen ber om som CV-en for øyeblikket ikke viser.
+- En ATS-optimaliseringsgjennomgang — nøkkelord-/formattilpasning til hvordan automatisert screening faktisk tolker innsendinger.
 
-Rather than a one-click "generate and submit" tool, the student stays the decision-maker: they choose how much the tool rewrites outright versus merely flags for them to address themselves, in what output format, and at what level of language/style formality. The tool's role is qualitatively closer to a coach with visibility into the filtering mechanics than a ghostwriter.
+I stedet for et ett-klikks "generer og send inn"-verktøy, forblir studenten beslutningstaker: de velger hvor mye verktøyet skal skrive om direkte versus bare flagge for at studenten selv skal håndtere det, i hvilket filformat, og på hvilket språk-/stilnivå av formalitet. Verktøyets rolle ligner kvalitativt mer på en coach med innsyn i filtreringsmekanikken enn en spøkelsesskribent.
 
-## What Makes This Different
+## Hva som gjør dette annerledes
 
-The core mechanics here — CV/JD matching, ATS scoring, gap analysis, AI-drafted cover letters — are **not novel**. This is a crowded category: Teal, Rezi, Kickresume, Jobscan, Enhancv, and Resume Worded all do versions of this internationally, and Norwegian-market tools already exist doing largely the same thing in-language (Jobbki, Cvenn, SøknadGPT/cvcv.no). Any brief that pretends otherwise would be dishonest about the actual competitive position.
+Kjernemekanikken her — CV/stillingsannonse-matching, ATS-scoring, gapanalyse, KI-utkast til søknadsbrev — er **ikke ny**. Dette er en overfylt kategori: Teal, Rezi, Kickresume, Jobscan, Enhancv og Resume Worded gjør alle versjoner av dette internasjonalt, og norske markedsverktøy finnes allerede og gjør stort sett det samme på norsk (Jobbki, Cvenn, SøknadGPT/cvcv.no). Enhver beskrivelse som later som noe annet ville vært uærlig om den faktiske konkurransesituasjonen.
 
-What differentiates this tool:
+Det som skiller dette verktøyet:
 
-- **A genuine pedagogical framing, core to the product, not flavor text.** The tool doesn't just produce output — it shows the student *how* the AI-driven filtering it's imitating actually evaluates their material: surfacing *why* a keyword matched or didn't, not just a score. This is a meaningfully different product from "paste CV + JD → get letter," and is designed for explicitly rather than treated as an afterthought.
-- A trust-first data story (encrypted storage, clear retention/deletion, GDPR-aligned handling) as an explicit selling point to a student audience that is handing over CVs and application history — rather than the implicit, unstated posture most competitors take.
-- **Norwegian-market and institution-specific fit**: language, local job-market conventions, and a product built around Norwegian students' actual job search context, not a generic international one.
+- **En reell pedagogisk vinkling, som er kjernen i produktet, ikke bare pynt.** Verktøyet produserer ikke bare et resultat — det viser studenten *hvordan* den KI-drevne filtreringen det etterligner faktisk vurderer materialet deres: det synliggjør *hvorfor* et nøkkelord traff eller ikke, ikke bare en poengsum. Dette er et grunnleggende annerledes produkt enn "lim inn CV + stillingsannonse → få et brev", og er utformet eksplisitt for dette, ikke behandlet som en ettertanke.
+- En tillitsbasert datahistorie (kryptert lagring, klar retensjons-/slettingspraksis, GDPR-tilpasset håndtering) som et eksplisitt salgsargument overfor et studentpublikum som overleverer CV-er og søknadshistorikk — i stedet for den implisitte, uuttalte holdningen de fleste konkurrenter har.
+- **Tilpasning til det norske markedet og norske institusjoner**: språk, lokale konvensjoner i arbeidsmarkedet, og et produkt bygget rundt norske studenters faktiske jobbsøkerkontekst, ikke en generisk internasjonal en.
 
-## Who This Serves
+## Hvem dette er for
 
-**Primary user: Norwegian students** actively job/internship hunting, applying to multiple postings and currently reusing generic materials because per-posting tailoring is too slow to do by hand. The product is built around Norwegian-language handling, NAV/local job-market conventions, and GDPR handling framed for a Norwegian audience.
+**Primærbruker: norske studenter** som aktivt søker jobb/internship, søker på flere annonser og for øyeblikket gjenbruker generisk materiale fordi tilpasning per annonse er for tidkrevende å gjøre manuelt. Produktet er bygget rundt norsk språkhåndtering, NAV/lokale konvensjoner i arbeidsmarkedet, og GDPR-håndtering rettet mot et norsk publikum.
 
-General-purpose across disciplines — no specific field of study or institution is targeted.
+Generell på tvers av fagfelt — ingen spesifikk studieretning eller institusjon er målgruppen.
 
-Success for this user: they submit an application that is honestly stronger — more specifically matched to the posting, with real gaps identified rather than papered over — and they come away understanding *why* it's stronger, not just handing the task to a black box.
+Suksess for denne brukeren: de sender inn en søknad som er reelt sterkere — mer spesifikt tilpasset annonsen, med reelle hull identifisert i stedet for tildekket — og de sitter igjen med forståelse for *hvorfor* den er sterkere, ikke bare har overlatt oppgaven til en svart boks.
 
-## Success Criteria
+## Suksesskriterier
 
-- Users can go from CV + job posting to a usable tailored cover letter draft, CV suggestions, and a gap analysis in a single session.
-- Gap analysis and ATS-optimization output are accurate enough that students trust and act on them (vs. ignoring the tool after one try).
-- No qualification or experience is fabricated in generated output that isn't traceable to the source CV — this is a hard correctness bar, not an aspiration, given the hallucination risk documented across this product category.
-- Data handling (encryption, login, retention/deletion) meets a standard the user would be comfortable defending if asked directly "what happens to my CV after I upload it?"
+- Brukere kan gå fra CV + stillingsannonse til et brukbart utkast til skreddersydd søknadsbrev, CV-forslag og en gapanalyse i én økt.
+- Gapanalyse og ATS-optimaliseringsresultat er presise nok til at studenter stoler på og handler på dem (fremfor å ignorere verktøyet etter ett forsøk).
+- Ingen kvalifikasjon eller erfaring dikteres opp i generert innhold som ikke kan spores tilbake til kilde-CV-en — dette er en hard korrekthetsgrense, ikke en ambisjon, gitt den dokumenterte hallusinasjonsrisikoen i denne produktkategorien.
+- Databehandling (kryptering, innlogging, retensjon/sletting) møter en standard brukeren ville vært komfortabel med å forsvare hvis de ble spurt direkte "hva skjer med CV-en min etter at jeg laster den opp?"
 
-## Scope
+## Omfang
 
-**In for a first version** (derived from the stated inputs/outputs):
-- Input: CV upload (PDF/DOC/TXT), job posting (text or URL/paste), keywords, desired tone/style, access to the student's previous applications for context.
-- Output: tailored cover letter, CV improvement suggestions, gap/missing-qualifications analysis, ATS-optimization feedback.
-- Account system with login; encrypted storage for CVs and application history.
+**Med i første versjon** (utledet fra de oppgitte inn-/utdataene):
+- Input: CV-opplasting (PDF/DOC/TXT), stillingsannonse (tekst eller URL/lim inn), nøkkelord, ønsket tone/stil, tilgang til studentens tidligere søknader for kontekst.
+- Output: skreddersydd søknadsbrev, CV-forbedringsforslag, gap-/manglende-kvalifikasjoner-analyse, ATS-optimaliseringstilbakemelding.
+- Kontosystem med innlogging; kryptert lagring for CV-er og søknadshistorikk.
 
-**Explicitly open — not yet decided (the user's own "decision points"):**
-- **Degree of rewriting vs. suggestion**: does the tool draft full replacement text, or only flag/suggest and leave the writing to the student? This is a product-defining choice (ghostwriter vs. coach) and shouldn't default silently — it likely needs to be a setting, not a one-time architectural decision, given the "coach not ghostwriter" positioning discussed above.
-- **Output file format**: DOC, Markdown, and/or PDF — which is default, which are supported at all.
-- **Language/style level**: how much control the student gets over tone/formality, and in what language(s) the tool operates.
+**Eksplisitt åpent — ikke besluttet ennå (brukerens egne "beslutningspunkter"):**
+- **Grad av omskriving versus forslag**: skal verktøyet utarbeide fullstendig erstatningstekst, eller kun flagge/foreslå og la skrivingen være opp til studenten? Dette er et produktdefinerende valg (spøkelsesskribent versus coach) og bør ikke stilltiende defaultes — det trenger trolig å være en innstilling, ikke en engangs arkitekturbeslutning, gitt "coach, ikke spøkelsesskribent"-posisjoneringen diskutert ovenfor.
+- **Utdataformat for filer**: DOC, Markdown og/eller PDF — hvilket er standard, hvilke støttes i det hele tatt.
+- **Språk-/stilnivå**: hvor mye kontroll studenten får over tone/formalitet, og på hvilket(e) språk verktøyet opererer.
 
-**Out of scope for v1**: direct submission/auto-apply to job boards, employer/recruiter-facing features, multi-language CV translation, native mobile app (web-first, given login + storage requirements).
+**Utenfor omfang for v1**: direkte innsending/auto-søking til jobbportaler, funksjoner rettet mot arbeidsgivere/rekrutterere, flerspråklig CV-oversettelse, native mobilapp (web-først, gitt krav om innlogging + lagring).
 
-## Data & Privacy
+## Data og personvern
 
-Called out here as its own section because the user flagged it directly, and the research grounding this brief confirms it's load-bearing, not a checkbox:
+Trukket frem som egen seksjon fordi brukeren flagget dette direkte, og forskningsgrunnlaget for denne beskrivelsen bekrefter at det er bærende, ikke en avkrysningsboks:
 
-- CVs and application history are personal data. Encrypted storage and authenticated access (both stated as requirements) are the minimum baseline, not the ceiling.
-- Users are in Norway/EU, so GDPR applies concretely: a lawful basis (likely explicit consent), data minimization and a retention/deletion policy (not indefinite storage by default), and — if an external LLM API is used to process CVs — disclosure of that sub-processor to users.
-- **Still open**: is data retained to give the "previous applications" context feature real value (which argues for longer retention), or minimized aggressively (which argues against it)? This is a direct tension between a stated input ("tidligere søknader" / previous applications) and good data-minimization practice, and deserves a deliberate answer rather than a default.
+- CV-er og søknadshistorikk er personopplysninger. Kryptert lagring og autentisert tilgang (begge angitt som krav) er minimumsstandarden, ikke taket.
+- Brukerne er i Norge/EU, så GDPR gjelder konkret: et rettslig grunnlag (trolig eksplisitt samtykke), dataminimering og en retensjons-/slettingspolicy (ikke lagring på ubestemt tid som standard), og — hvis et eksternt LLM-API brukes til å behandle CV-er — informasjon til brukerne om denne underleverandøren.
+- **Fortsatt åpent**: skal data lagres for å gi funksjonen "tidligere søknader" reell verdi (som taler for lengre lagring), eller minimeres aggressivt (som taler mot det)? Dette er en direkte spenning mellom en oppgitt input ("tidligere søknader") og god praksis for dataminimering, og fortjener et bevisst svar fremfor en standardløsning.
 
-## Vision — Six Months Out
+## Visjon — om seks måneder
 
-In six months, this is a tool Norwegian students actually return to across a full job search — not a one-off generator they try once, but something used application after application because it holds real context: what's been tried, what phrasing has landed interviews, where the recurring gaps are. The pedagogical angle is a visible, distinguishing part of the experience, not a footnote — using the tool teaches a student something concrete about how AI-driven recruitment actually filters their material, each time they use it. Trust in how their data is handled (encryption, clear retention, no surprise use of their CV) is part of why they keep coming back, not just the writing quality.
+Om seks måneder er dette et verktøy norske studenter faktisk kommer tilbake til gjennom en hel jobbsøkerprosess — ikke en engangsgenerator de prøver én gang, men noe som brukes søknad etter søknad fordi det holder på reell kontekst: hva som er prøvd, hvilke formuleringer som har ført til intervjuer, hvor de tilbakevendende hullene er. Den pedagogiske vinklingen er en synlig, distinkt del av opplevelsen, ikke en fotnote — å bruke verktøyet lærer studenten noe konkret om hvordan KI-drevet rekruttering faktisk filtrerer materialet deres, hver gang de bruker det. Tillit til hvordan dataene deres håndteres (kryptering, klar retensjon, ingen overraskende bruk av CV-en deres) er en del av grunnen til at de kommer tilbake, ikke bare kvaliteten på skrivingen.
 
 ---
 
-## Open Items for the User
+## Åpne punkter for brukeren
 
-Most assumptions from the first draft have been resolved into decisions above. Two things remain genuinely open:
+De fleste antagelsene fra førsteutkastet er nå avklart til beslutninger ovenfor. To ting er fortsatt reelt åpne:
 
-1. **Retention vs. minimization tension** on "previous applications" data (see Data & Privacy) — deliberate call still needed.
-2. Any deadline, assignment context, or specific competitor tools you're consciously reacting to — not yet stated.
+1. **Spenningen mellom retensjon og minimering** for data om "tidligere søknader" (se Data og personvern) — bevisst avgjørelse gjenstår.
+2. Eventuell frist, oppgavekontekst, eller spesifikke konkurrentverktøy du bevisst forholder deg til — ikke oppgitt ennå.
