@@ -15,7 +15,7 @@ Denne filen samler alle revisjoner som er gjort av `brief.md` i dette repoet, i 
 | 4 | `07f6afc` | 2026-09-18 | Fredrik Lien | Oversatt til norsk |
 | 5 | `3d1e8d6` | 2026-10-26 | Fredrik Lien | Suksesskriterier gjort testbare/sjekkbare, basert på faglærers tilbakemelding |
 | 6 | `598faec` | 2026-10-26 | Fredrik Lien | Omfanget delt i trinn (kjerne → søknadsbrev/CV-forslag → innlogging/lagring), basert på faglærers tilbakemelding |
-| 7 | *(ikke committet ennå)* | 2026-10-26 | Fredrik Lien | Suksesskriterier gjort fullt målbare, scoringsregel for nøkkelord definert, testsett og demomodus planlagt |
+| 7 | `0247ca7` | 2026-10-26 | Fredrik Lien | Suksesskriterier gjort fullt målbare, scoringsregel for nøkkelord definert, testsett og demomodus planlagt |
 
 ## 1. `b6959a3` — Opprinnelig product brief lagt til (2026-09-18)
 
@@ -67,7 +67,7 @@ Endringer:
 - URL-skraping av stillingsannonser, opplasting i DOC-format, og eksport til flere filformater samtidig flyttet fra "med i v1" til "utenfor omfang for v1".
 - Beslutningspunktene (omskriving vs. forslag, filformat, språk/stil) omformulert til å vise hvilket trinn de hører til.
 
-## 7. *(ikke committet ennå)* — Målbare suksesskriterier, scoringsregel, testsett og demomodus (2026-10-26)
+## 7. `0247ca7` — Målbare suksesskriterier, scoringsregel, testsett og demomodus (2026-10-26)
 
 Oppfølging av faglærers "Neste steg for gruppen"-punkt 3: "Skriv om suksesskriteriene til målbare krav, definer scoringsregelen, planlegg demomodus, og gå deretter videre til PRD."
 
