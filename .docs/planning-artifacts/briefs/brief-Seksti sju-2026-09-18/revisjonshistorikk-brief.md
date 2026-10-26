@@ -15,6 +15,7 @@ Denne filen samler alle revisjoner som er gjort av `brief.md` i dette repoet, i 
 | 4 | `07f6afc` | 2026-09-18 | Fredrik Lien | Oversatt til norsk |
 | 5 | `3d1e8d6` | 2026-10-26 | Fredrik Lien | Suksesskriterier gjort testbare/sjekkbare, basert på faglærers tilbakemelding |
 | 6 | `598faec` | 2026-10-26 | Fredrik Lien | Omfanget delt i trinn (kjerne → søknadsbrev/CV-forslag → innlogging/lagring), basert på faglærers tilbakemelding |
+| 7 | *(ikke committet ennå)* | 2026-10-26 | Fredrik Lien | Suksesskriterier gjort fullt målbare, scoringsregel for nøkkelord definert, testsett og demomodus planlagt |
 
 ## 1. `b6959a3` — Opprinnelig product brief lagt til (2026-09-18)
 
@@ -65,3 +66,13 @@ Endringer:
   3. **Trinn 3:** kontosystem med innlogging og kryptert lagring av CV-er og søknadshistorikk.
 - URL-skraping av stillingsannonser, opplasting i DOC-format, og eksport til flere filformater samtidig flyttet fra "med i v1" til "utenfor omfang for v1".
 - Beslutningspunktene (omskriving vs. forslag, filformat, språk/stil) omformulert til å vise hvilket trinn de hører til.
+
+## 7. *(ikke committet ennå)* — Målbare suksesskriterier, scoringsregel, testsett og demomodus (2026-10-26)
+
+Oppfølging av faglærers "Neste steg for gruppen"-punkt 3: "Skriv om suksesskriteriene til målbare krav, definer scoringsregelen, planlegg demomodus, og gå deretter videre til PRD."
+
+Endringer:
+- **Suksesskriterier** strammet ytterligere inn: gapanalyse-kriteriet viser nå til scoringsregelen og testsettet under i stedet for å definere dem på nytt; sporbarhetskriteriet presisert til at alle påstander i generert innhold skal kunne kobles til et sitat i kilde-CV-en for hvert av de 5 testparene; slettekriteriet presisert til at sletting verifiseres med et direkte databaseoppslag; nytt kriterium lagt til om at en sensor kan starte appen i demomodus uten gruppens egne nøkler.
+- **Ny seksjon "Scoringsregel for nøkkelord"**: definerer en egendefinert, dokumentert fremgangsmåte — nøkkelordutvinning via et fast promptkall, klassifisering av hvert nøkkelord som treff/delvis treff/ikke funnet (med sitat fra CV-en som bevis), og en konkret scoreformel: (antall treff + 0,5 × antall delvise treff) ÷ totalt antall nøkkelord × 100.
+- **Ny seksjon "Testsett"**: et fast sett på 5 fiktive CV/stillingsannonse-par med kjent fasit over forventede gap, lagret i repoet, brukt både til å teste scoringsregelen og til demomodus.
+- **Ny seksjon "Demomodus og kjørbarhet"**: en `DEMO_MODE`-miljøvariabel som lar appen kjøre mot ferdiginnspilte språkmodell-svar for testsettet i stedet for en ekte LLM-API, en `.env.example` i repoet, og to dokumenterte oppstartsveier i README (demo uten nøkler, og normal modus med egen API-nøkkel).

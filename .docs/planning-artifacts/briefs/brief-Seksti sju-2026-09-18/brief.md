@@ -60,9 +60,26 @@ Suksess for denne brukeren: de sender inn en søknad som er reelt sterkere — m
 ## Suksesskriterier
 
 - Brukere kan gå fra CV + stillingsannonse til et brukbart utkast til skreddersydd søknadsbrev, CV-forslag og en gapanalyse i én økt.
-- For et fast sett på 5 forhåndsdefinerte test-par av CV og stillingsannonse (med kjent fasit over forventede gap), finner gapanalysen minst 4 av 5 forhåndsdefinerte gap per par, og nøkkelordscoren beregnes etter en egendefinert, dokumentert scoringsregel — ikke en påstand om å etterligne et reelt ATS, som verken kan verifiseres eller kontrolleres.
-- Ingen kvalifikasjon eller erfaring dikteres opp i generert innhold som ikke kan spores tilbake til kilde-CV-en — dette er en hard korrekthetsgrense, ikke en ambisjon, gitt den dokumenterte hallusinasjonsrisikoen i denne produktkategorien.
-- En bruker kan slette all sin lagrede data (CV-er, søknadshistorikk og analyser) via kontoinnstillingene, og denne dataen er verifiserbart borte fra databasen etter sletting.
+- For det faste settet på 5 forhåndsdefinerte test-par av CV og stillingsannonse (se "Testsett" under), finner gapanalysen minst 4 av 5 forhåndsdefinerte gap per par, og nøkkelordscoren beregnes etter scoringsregelen definert under — ikke en påstand om å etterligne et reelt ATS, som verken kan verifiseres eller kontrolleres.
+- Ingen kvalifikasjon eller erfaring dikteres opp i generert innhold som ikke kan spores tilbake til kilde-CV-en: for hvert av de 5 testparene skal alle påstander i søknadsbrev og CV-forslag kunne kobles til et konkret sitat i kilde-CV-en — dette er en hard korrekthetsgrense, ikke en ambisjon, gitt den dokumenterte hallusinasjonsrisikoen i denne produktkategorien.
+- En bruker kan slette all sin lagrede data (CV-er, søknadshistorikk og analyser) via kontoinnstillingene, og et direkte databaseoppslag etter sletting viser at dataen er borte.
+- En sensor kan starte appen lokalt etter README, i demomodus (se "Demomodus og kjørbarhet" under), og se resultatet for de 5 testparene uten gruppens egne API-nøkler eller betalte kontoer.
+
+### Scoringsregel for nøkkelord
+
+Fordi reelle ATS-er er proprietære og ukjente, bruker verktøyet sin egen, dokumenterte regel i stedet for å late som den reproduserer en bestemt leverandørs algoritme:
+
+1. **Nøkkelordutvinning**: for hver stillingsannonse hentes 10–15 krav-nøkkelord (ferdigheter, verktøy, kvalifikasjoner) ut med ett språkmodellkall mot en fast, lagret prompt-mal. Nøkkelordene lagres som en liste, synlig for studenten.
+2. **Klassifisering mot CV-en**: hvert nøkkelord sjekkes mot CV-teksten og klassifiseres som:
+   - **Treff** — eksakt eller nær-eksakt forekomst i CV-en (med sitat fra CV-en som bevis).
+   - **Delvis treff** — funnet via en liten, dokumentert synonym-/forkortelsesliste (f.eks. "JS" ↔ "JavaScript").
+   - **Ikke funnet** — ingen forekomst; dette utgjør gapanalysen.
+3. **Score** = (antall treff + 0,5 × antall delvise treff) ÷ totalt antall nøkkelord × 100, avrundet til nærmeste heltall.
+4. **Forklaring**: for hvert nøkkelord vises klassifiseringen og (ved treff/delvis treff) sitatet fra CV-en som utløste den — dette er mekanismen bak "hvorfor traff et nøkkelord eller ikke" i den pedagogiske vinklingen.
+
+### Testsett
+
+Et fast sett på 5 fiktive CV/stillingsannonse-par, med en fasit over forventede gap for hvert par, lages før trinn 1 testes og lagres i repoet (f.eks. under `.docs/testdata/`). Dette samme settet brukes til: scoringsregel-testene over, demomodus (se under), og manuell kvalitetskontroll av språkmodellens output gjennom prosjektet.
 
 ## Omfang
 
@@ -87,6 +104,15 @@ Omfanget er delt i trinn etter tilbakemelding om at den opprinnelige v1 var for 
 - **Lagring i trinn 3**: om og hvor lenge data lagres, se spenningen beskrevet under Data og personvern.
 
 **Utenfor omfang for v1** (flyttet ut etter tilbakemelding om at disse gjør kjernen unødig krevende å få pålitelig): direkte innsending/auto-søking til jobbportaler, funksjoner rettet mot arbeidsgivere/rekrutterere, flerspråklig CV-oversettelse, native mobilapp, URL-skraping av stillingsannonser (kun lim inn tekst), opplasting i DOC-format, eksport til flere filformater samtidig.
+
+## Demomodus og kjørbarhet
+
+Lagt til etter tilbakemelding om at appen må kunne kjøres av en sensor lokalt, uten gruppens egne API-nøkler, betalte kontoer eller tilgang til gruppens infrastruktur:
+
+- En `DEMO_MODE`-miljøvariabel lar appen kjøre mot lagrede, ferdiginnspilte språkmodell-svar for de 5 faste testparene (se Testsett over) i stedet for å kalle en ekte LLM-API. Dette gjør det mulig å starte og bruke hele kjerneflyten (trinn 1) uten noen nøkkel.
+- `.env.example` i repoet lister alle miljøvariabler appen bruker, med placeholder-verdier, inkludert hvordan `DEMO_MODE` skrus på.
+- README beskriver to oppstartsveier: demomodus (ingen nøkler, bruker testparene) og normal modus (krever en egen LLM-API-nøkkel som brukeren selv setter inn).
+- Fra trinn 3 (innlogging og lagring) planlegges demomodus til også å dekke en forhåndsutfylt demo-konto, slik at historikkfunksjonen kan vises uten at sensor må registrere en konto eller legge inn ekte data.
 
 ## Data og personvern
 
