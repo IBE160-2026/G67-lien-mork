@@ -60,9 +60,9 @@ Suksess for denne brukeren: de sender inn en søknad som er reelt sterkere — m
 ## Suksesskriterier
 
 - Brukere kan gå fra CV + stillingsannonse til et brukbart utkast til skreddersydd søknadsbrev, CV-forslag og en gapanalyse i én økt.
-- Gapanalyse og ATS-optimaliseringsresultat er presise nok til at studenter stoler på og handler på dem (fremfor å ignorere verktøyet etter ett forsøk).
+- For et fast sett på 5 forhåndsdefinerte test-par av CV og stillingsannonse (med kjent fasit over forventede gap), finner gapanalysen minst 4 av 5 forhåndsdefinerte gap per par, og nøkkelordscoren beregnes etter en egendefinert, dokumentert scoringsregel — ikke en påstand om å etterligne et reelt ATS, som verken kan verifiseres eller kontrolleres.
 - Ingen kvalifikasjon eller erfaring dikteres opp i generert innhold som ikke kan spores tilbake til kilde-CV-en — dette er en hard korrekthetsgrense, ikke en ambisjon, gitt den dokumenterte hallusinasjonsrisikoen i denne produktkategorien.
-- Databehandling (kryptering, innlogging, retensjon/sletting) møter en standard brukeren ville vært komfortabel med å forsvare hvis de ble spurt direkte "hva skjer med CV-en min etter at jeg laster den opp?"
+- En bruker kan slette all sin lagrede data (CV-er, søknadshistorikk og analyser) via kontoinnstillingene, og denne dataen er verifiserbart borte fra databasen etter sletting.
 
 ## Omfang
 
