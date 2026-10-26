@@ -66,17 +66,27 @@ Suksess for denne brukeren: de sender inn en søknad som er reelt sterkere — m
 
 ## Omfang
 
-**Med i første versjon** (utledet fra de oppgitte inn-/utdataene):
-- Input: CV-opplasting (PDF/DOC/TXT), stillingsannonse (tekst eller URL/lim inn), nøkkelord, ønsket tone/stil, tilgang til studentens tidligere søknader for kontekst.
-- Output: skreddersydd søknadsbrev, CV-forbedringsforslag, gap-/manglende-kvalifikasjoner-analyse, ATS-optimaliseringstilbakemelding.
-- Kontosystem med innlogging; kryptert lagring for CV-er og søknadshistorikk.
+Omfanget er delt i trinn etter tilbakemelding om at den opprinnelige v1 var for stor til å bli ferdig og stabil på ett semester. Hvert trinn bygges først når det forrige er ferdig og stabilt.
+
+**Trinn 1 — kjernen i v1 (må være ferdig og stabil før resten bygges):**
+- Input: én CV (limt inn som tekst, eller PDF-opplasting) og én stillingsannonse (limt inn som tekst).
+- Output: gapanalyse (kvalifikasjoner annonsen ber om som CV-en ikke viser) og nøkkelordscore, med forklaring av *hvorfor* hvert nøkkelord traff eller ikke — den pedagogiske vinklingen som er kjernen i produktet.
+- Ingen kontosystem og ingen lagring i dette trinnet: analysen er statsløs. Det holder personvernrisikoen og kompleksiteten nede til lagring er en bevisst, dokumentert beslutning (se trinn 3).
+
+**Trinn 2 — bygges etter at trinn 1 er ferdig og stabilt:**
+- Tailored søknadsbrev og CV-forbedringsforslag.
+- En innstilling for grad av omskriving versus forslag (se beslutningspunkt under) — produktets "coach, ikke spøkelsesskribent"-posisjon gjøres om til en faktisk valgmulighet her.
+
+**Trinn 3 — bygges etter at trinn 2 er ferdig og stabilt:**
+- Kontosystem med innlogging og kryptert lagring av CV-er og søknadshistorikk, inkludert bruk av tidligere søknader som kontekst.
 
 **Eksplisitt åpent — ikke besluttet ennå (brukerens egne "beslutningspunkter"):**
-- **Grad av omskriving versus forslag**: skal verktøyet utarbeide fullstendig erstatningstekst, eller kun flagge/foreslå og la skrivingen være opp til studenten? Dette er et produktdefinerende valg (spøkelsesskribent versus coach) og bør ikke stilltiende defaultes — det trenger trolig å være en innstilling, ikke en engangs arkitekturbeslutning, gitt "coach, ikke spøkelsesskribent"-posisjoneringen diskutert ovenfor.
-- **Utdataformat for filer**: DOC, Markdown og/eller PDF — hvilket er standard, hvilke støttes i det hele tatt.
+- **Grad av omskriving versus forslag** (trinn 2): skal verktøyet utarbeide fullstendig erstatningstekst, eller kun flagge/foreslå og la skrivingen være opp til studenten? Dette er et produktdefinerende valg og bør ikke stilltiende defaultes — det trenger trolig å være en innstilling, ikke en engangs arkitekturbeslutning.
+- **Utdataformat for filer** (trinn 2): hvilket format søknadsbrev og CV-forslag leveres i som standard — avklares når trinn 2 planlegges, ikke før.
 - **Språk-/stilnivå**: hvor mye kontroll studenten får over tone/formalitet, og på hvilket(e) språk verktøyet opererer.
+- **Lagring i trinn 3**: om og hvor lenge data lagres, se spenningen beskrevet under Data og personvern.
 
-**Utenfor omfang for v1**: direkte innsending/auto-søking til jobbportaler, funksjoner rettet mot arbeidsgivere/rekrutterere, flerspråklig CV-oversettelse, native mobilapp (web-først, gitt krav om innlogging + lagring).
+**Utenfor omfang for v1** (flyttet ut etter tilbakemelding om at disse gjør kjernen unødig krevende å få pålitelig): direkte innsending/auto-søking til jobbportaler, funksjoner rettet mot arbeidsgivere/rekrutterere, flerspråklig CV-oversettelse, native mobilapp, URL-skraping av stillingsannonser (kun lim inn tekst), opplasting i DOC-format, eksport til flere filformater samtidig.
 
 ## Data og personvern
 
