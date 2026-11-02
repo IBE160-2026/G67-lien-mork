@@ -5,3 +5,7 @@
 #
 # [agents.bmad-agent-pm]
 # description = "Prefers short, bulleted PRDs over narrative drafts."
+
+# Bindestrek i stedet for mellomrom, slik at artefaktmapper (prd-Seksti-sju-…) fungerer i kommandolinjen.
+[core]
+project_name = "Seksti-sju"
