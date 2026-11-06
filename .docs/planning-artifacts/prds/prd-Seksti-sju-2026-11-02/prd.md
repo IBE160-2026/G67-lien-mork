@@ -2,7 +2,7 @@
 title: "PRD: CV- og søknadsassistent for studenter"
 status: draft
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-06
 ---
 
 # PRD: CV- og søknadsassistent for studenter
@@ -132,6 +132,8 @@ Verktøyet avgjør om CV-en og stillingsannonsen er på norsk eller engelsk før
 Verktøyet henter ut 10–15 nøkkelord fra stillingsannonsen med ett kall til språkmodellen, med promptmalen. Realiserer UJ-1.
 
 - Nøkkelordene er på samme språk som stillingsannonsen.
+- Hvert nøkkelord er kort (1–3 ord) og i grunnform, slik det typisk står i en CV: «Excel» eller «prosjektledelse», ikke «god erfaring med prosjektledelse». Promptmalen ber om denne formen, og svar som bryter den, behandles som svar uten forventet form (NFR-2). Formålet er at klassifiseringen i kode (FR-5) ikke skal gi falske gap (SM-C1).
+- [ASSUMPTION: Myke ferdigheter, for eksempel «samarbeid» eller «kommunikasjon», tas bare med når de kan uttrykkes som et kort ord som kan stå i en CV. Vage formuleringer som «positiv innstilling» tas ikke med.]
 - Inneholder stillingsannonsen færre enn 10 konkrete krav, vises de som ble funnet, med beskjed om det. [ASSUMPTION]
 - Bare stillingsannonsen sendes til språkmodellen; CV-en sendes aldri til språkmodellen i trinn 1. [ASSUMPTION: Følger av at klassifiseringen skjer i kode. Bekreft at dette skal være et krav.]
 - Ferdiginnspilte svar er knyttet til versjonen av promptmalen de ble laget med.
@@ -157,6 +159,7 @@ Verktøyet regner ut scoren etter formelen i §3 og viser fordelingen bak den. R
 Studenten ser forklaringen for hvert nøkkelord. Realiserer UJ-1.
 
 - Treff og Delvis treff viser sitatet fra CV-en; Delvis treff viser også synonymet som ga treff.
+- [ASSUMPTION: Sitatet er hele setningen, eller hele linjen i punktlister og tabeller, der nøkkelordet eller synonymet står første gang i CV-en. Treffordet uthevs i sitatet.]
 - Ikke funnet sier at verken nøkkelordet eller noe synonym står i CV-en.
 - Klassifiseringen vises med tekst eller ikon i tillegg til farge.
 
@@ -347,7 +350,7 @@ Verktøyet skal aldri tilskrive studenten erfaring eller kvalifikasjoner som ikk
 - **Trinn 2:** CV-en og stillingsannonsen sendes til språkmodellen. Studenten får vite det, og hvilken leverandør det er, før første generering (FR-11).
 - **Trinn 3:** Behandlingsgrunnlaget er samtykke (FR-17). Data lagres kryptert til studenten sletter dem (FR-23), og studenten ser hva som er lagret (FR-22). [NOTE FOR PM: «Til studenten sletter» betyr at data på kontoer som ikke lenger brukes, blir liggende. Det er et bevisst valg for kurset, men bør vurderes på nytt før eventuell bruk utenfor kurset.]
 - **Demomodus:** Ingen data forlater maskinen.
-- **Testdata:** Bare fiktive CV-er og stillingsannonser, aldri ekte personopplysninger.
+- **Testdata:** Bare fiktive CV-er og stillingsannonser, aldri ekte personopplysninger. Dette gjelder også brukertesten (SM-4).
 
 ### 6.3 Kostnad
 
@@ -356,6 +359,8 @@ Normal modus koster ett kall til språkmodellen per analyse i trinn 1 og noen f�
 ## 7. Testsett og kvalitetssikring
 
 Testsettet lages før trinn 1 testes og ligger i repoet. [ASSUMPTION: Under `.docs/testdata/`, slik briefen foreslår; arkitekturen kan flytte det.] Det består av fem testpar fra ulike fagfelt, og minst to av dem er på engelsk. [ASSUMPTION: For eksempel økonomi, informatikk, sykepleie, ingeniørfag og lærerutdanning.] Hver fasit har fem forventede gap og nøkkelordene som skal gi Treff eller Delvis treff.
+
+Et gap i fasiten regnes som funnet når et nøkkelord i analysen har status Ikke funnet og tilsvarer gapet etter samme regel som Treff og Delvis treff i FR-5, med synonymlisten. Fasitens «Excel» tilsvarer dermed nøkkelordet «Microsoft Excel» bare hvis paret står i synonymlisten. Samme regel brukes når nøkkelord i fasiten som skal gi Treff eller Delvis treff, sammenlignes med analysen (SM-C1).
 
 Testsettet brukes til:
 
@@ -402,13 +407,13 @@ Brukertesten i SM-4 og SM-8 kjøres når trinn 2 er ferdig.
 
 **Primære**
 
-- **SM-1 Gapfangst:** For hvert av de fem testparene finner gapanalysen minst 4 av 5 gap i fasiten. Måles automatisk med ferdiginnspilte svar, og manuelt mot språkmodellen når promptmalen endres. Validerer FR-4, FR-5 og FR-8.
+- **SM-1 Gapfangst:** For hvert av de fem testparene finner gapanalysen minst 4 av 5 gap i fasiten, sammenlignet etter regelen i §7. Måles automatisk med ferdiginnspilte svar, og manuelt mot språkmodellen når promptmalen endres. Validerer FR-4, FR-5 og FR-8.
 - **SM-2 Ingen dikting:** For alle fem testparene, i begge skrivemodusene, står 100 % av sitatene ordrett i CV-en, og ingen omskrevet tekst inneholder et nøkkelord som er Ikke funnet. Måles automatisk. Validerer FR-12–FR-15.
 - **SM-3 Kjørbar for sensor:** En person utenfor gruppen starter appen i demomodus etter README, på en maskin uten gruppens nøkler, og ser resultatet for alle fem testparene. Validerer FR-25, FR-26 og FR-28.
 
 **Sekundære**
 
-- **SM-4 Én økt:** I en brukertest med minst tre studenter går hver testperson fra CV og stillingsannonse til gapanalyse, forbedringsforslag og søknadsbrevutkast i én økt, uten hjelp. [ASSUMPTION: tre testpersoner.] Validerer FR-1–FR-16.
+- **SM-4 Én økt:** I en brukertest med minst tre studenter går hver testperson fra CV og stillingsannonse til gapanalyse, forbedringsforslag og søknadsbrevutkast i én økt, uten hjelp. [ASSUMPTION: tre testpersoner.] [ASSUMPTION: Brukertesten kjøres i normal modus, slik at testpersonene selv limer inn og laster opp tekst (FR-1 og FR-2), men med CV-er og stillingsannonser fra testsettet eller andre fiktive tekster, ikke testpersonenes egne. Da sendes ingen ekte personopplysninger til språkmodellen (§6.2). Vil gruppen la testpersonene bruke sine egne CV-er, må de på forhånd få vite at teksten sendes til språkmodellen, og samtykke skriftlig.] Validerer FR-1–FR-16.
 - **SM-5 Scoren følger regelen:** Enhetstester viser at scoren for testsettet og for kanttilfeller (ingen Delvis treff, bare Delvis treff, halvveis avrunding) er lik formelen i §3. Validerer FR-6.
 - **SM-6 Sletting:** Etter «Slett konto» finnes ingen rader knyttet til kontoen i databasen. Validerer FR-23.
 - **SM-7 Tilgangskontroll:** Automatiske tester viser at en student ikke får hentet en annen kontos analyse eller CV. Validerer FR-24.
@@ -435,7 +440,9 @@ Brukertesten i SM-4 og SM-8 kjøres når trinn 2 er ferdig.
 - FR-2 — Utlest PDF-tekst vises før analysen; PDF-er over 5 MB avvises.
 - FR-4 — Færre enn 10 nøkkelord vises med beskjed i stedet for å stoppe analysen.
 - FR-4 — CV-en sendes aldri til språkmodellen i trinn 1.
+- FR-4 — Myke ferdigheter tas bare med når de kan uttrykkes som et kort ord.
 - FR-5 — Treff tåler forskjeller i store og små bokstaver og vanlige bøyningsendelser.
+- FR-7 — Sitatet er setningen eller linjen der nøkkelordet står første gang, med treffordet uthevet.
 - FR-11 — Foreslå er forhåndsvalgt som skrivemodus.
 - FR-12 — Høyst 8 forbedringsforslag per analyse.
 - FR-14 — Brevdisposisjonens faste punkter, og nøytral tone uten tonevalg.
@@ -455,5 +462,6 @@ Brukertesten i SM-4 og SM-8 kjøres når trinn 2 er ferdig.
 - §7 — Testsettet ligger under `.docs/testdata/`, dekker fem fagfelt med minst to engelske testpar, og har egne kanttilfeller.
 - §9.2 — Tonevalg, Feide/Google-innlogging og tidligere søknadsbrev som kontekst er utenfor omfang.
 - SM-4 — Brukertesten har tre testpersoner.
+- SM-4 — Brukertesten kjøres i normal modus med fiktive tekster, ikke testpersonenes egne CV-er.
 - SM-8 — Minst to av tre testpersoner kan forklare en klassifisering.
 - SM-C1 — Høyst ett falskt gap per testpar.
