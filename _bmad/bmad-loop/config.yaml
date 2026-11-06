@@ -6,7 +6,7 @@
 
 # Core Configuration Values
 user_name: Edgar
-project_name: Seksti sju
+project_name: Seksti-sju
 communication_language: English
 document_output_language: English
 output_folder: "{project-root}/.docs"
